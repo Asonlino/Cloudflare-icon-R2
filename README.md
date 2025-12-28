@@ -40,7 +40,7 @@
 ```json
 {
   "name": "Asonino icon",
-  "description": "By ChuiYan",
+  "description": "By Asonlino",
   "icons": [
     {
       "name": "Bilibili",
