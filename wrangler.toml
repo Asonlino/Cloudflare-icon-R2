@@ -1,0 +1,17 @@
+name = "asonino-icon-cloud"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# 变量配置 (部署时需要修改)
+[vars]
+ADMIN_PASSWORD = "password123"
+
+# R2 存储桶绑定
+[[r2_buckets]]
+binding = "ICON_BUCKET"
+bucket_name = "icon-bucket"
+
+# KV 命名空间绑定
+[[kv_namespaces]]
+binding = "ICON_KV"
+id = "这里填你的KV_ID_如果不知道可以留空让用户自己填"
