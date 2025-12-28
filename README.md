@@ -51,7 +51,8 @@
       "url": "[https://your-worker.workers.dev/file/Google.png](https://your-worker.workers.dev/file/Google.png)"
     }
   ]
-}```
+}
+```
 
 **🚀 Deployment (部署指南)
 你可以使用 Cloudflare 网页控制台 (Dashboard) 或 Wrangler CLI 进行部署。
