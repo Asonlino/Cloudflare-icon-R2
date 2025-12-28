@@ -54,57 +54,80 @@
 }
 ```
 
-**🚀 Deployment (部署指南)
+---
+
+## 🚀 Deployment (部署指南)
+
 你可以使用 Cloudflare 网页控制台 (Dashboard) 或 Wrangler CLI 进行部署。
-前置要求
- * 一个 Cloudflare 账号。
- * 启用 Workers, R2 和 KV 功能。
-方式一：使用 Wrangler CLI (推荐)
- * 克隆项目
+
+### 前置要求
+1. 一个 Cloudflare 账号。
+2. 启用 Workers, R2 和 KV 功能。
+
+### 方式一：使用 Wrangler CLI (推荐)
+
+1. **克隆项目**
+   ```bash
    git clone [https://github.com/your-username/asonino-icon-cloud.git](https://github.com/your-username/asonino-icon-cloud.git)
-cd asonino-icon-cloud
+   cd asonino-icon-cloud
+   ```
 
- * 创建存储资源
+2. **创建存储资源**
+   ```bash
    # 创建 KV 命名空间
-npx wrangler kv:namespace create "ICON_KV"
+   npx wrangler kv:namespace create "ICON_KV"
+   
+   # 创建 R2 存储桶
+   npx wrangler r2 bucket create "icon-bucket"
+   ```
 
-# 创建 R2 存储桶
-npx wrangler r2 bucket create "icon-bucket"
+3. **配置 wrangler.toml**
+   将创建好的 ID 填入 `wrangler.toml` 文件中：
 
- * 配置 wrangler.toml
-   将创建好的 ID 填入 wrangler.toml 文件中：
+   ```toml
    [vars]
-ADMIN_PASSWORD = "your_secure_password" # 设置你的访问密码
+   ADMIN_PASSWORD = "your_secure_password" # 设置你的访问密码
 
-[[kv_namespaces]]
-binding = "ICON_KV"
-id = "替换为你的_KV_ID"
+   [[kv_namespaces]]
+   binding = "ICON_KV"
+   id = "替换为你的_KV_ID"
 
-[[r2_buckets]]
-binding = "ICON_BUCKET"
-bucket_name = "icon-bucket"
+   [[r2_buckets]]
+   binding = "ICON_BUCKET"
+   bucket_name = "icon-bucket"
+   ```
 
- * 部署
+4. **部署**
+   ```bash
    npx wrangler deploy
+   ```
 
-**方式二：Cloudflare 网页控制台
+### 方式二：Cloudflare 网页控制台
+
 如果你没有本地开发环境，可以直接在 Cloudflare Dashboard 操作：
- * 创建资源：在后台分别创建一个 KV (命名为 ICON_KV) 和一个 R2 Bucket (命名为 icon-bucket)。
- * 创建 Worker：新建一个 Worker，将 src/index.js 的代码复制进去。
- * 绑定变量：在 Worker 的 Settings -> Variables 中添加以下绑定：
-   * KV Namespace Bindings: 变量名 ICON_KV -> 指向你创建的 KV。
-   * R2 Bucket Bindings: 变量名 ICON_BUCKET -> 指向你创建的 Bucket。
-   * Environment Variables: 变量名 ADMIN_PASSWORD -> 值填入你想要的密码。
- * 保存并部署。
 
-**📖 Usage (使用说明)
- * 打开部署后的 Worker 域名 (例如 https://xxx.workers.dev).
- * 输入在环境变量中设置的密码。
- * 进入上传页面：
-   * 名称：输入图标名称（仅允许 A-Z, a-z）。
-   * 图片：点击或拖拽图片到上传框。
- * 点击上传，系统会自动处理图片并保存。
- * 访问 /api/icon 即可看到最新的 JSON 数据。
+1. **创建资源**：在后台分别创建一个 KV (命名为 `ICON_KV`) 和一个 R2 Bucket (命名为 `icon-bucket`)。
+2. **创建 Worker**：新建一个 Worker，将 `src/index.js` 的代码复制进去。
+3. **绑定变量**：在 Worker 的 **Settings -> Variables** 中添加以下绑定：
+   * **KV Namespace Bindings**: 变量名 `ICON_KV` -> 指向你创建的 KV。
+   * **R2 Bucket Bindings**: 变量名 `ICON_BUCKET` -> 指向你创建的 Bucket。
+   * **Environment Variables**: 变量名 `ADMIN_PASSWORD` -> 值填入你想要的密码。
+4. **保存并部署**。
 
-**📝 License
-MIT © 2025 Asonlino
+---
+
+## 📖 Usage (使用说明)
+
+1. 打开部署后的 Worker 域名 (例如 `https://xxx.workers.dev`).
+2. 输入在环境变量中设置的密码。
+3. 进入上传页面：
+   * **名称**：输入图标名称（仅允许 `A-Z`, `a-z`）。
+   * **图片**：点击或拖拽图片到上传框。
+4. 点击上传，系统会自动处理图片并保存。
+5. 访问 `/api/icon` 即可看到最新的 JSON 数据。
+
+---
+
+## 📝 License
+
+[MIT](LICENSE) © 2025 Asonlino
