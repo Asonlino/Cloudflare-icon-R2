@@ -1,0 +1,15 @@
+{
+  "name": "asonino-icon-cloud",
+  "version": "1.0.0",
+  "description": "A lightweight, serverless icon management system.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "wrangler deploy"
+  },
+  "author": "ChuiYan",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
