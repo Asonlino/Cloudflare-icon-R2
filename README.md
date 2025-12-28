@@ -1,37 +1,54 @@
-Asonino Icon Cloud
+# ☁️ Asonino Icon Cloud
+
 > A lightweight, serverless icon management system built on Cloudflare Workers.
-> 基于 Cloudflare Workers 构建的轻量级图标云端管理系统。
 > 
-Asonino Icon Cloud 是一个全栈 Serverless 应用，旨在提供简单、快速的图标托管服务。它允许管理员通过 Web 界面上传图片，并在浏览器端自动处理为标准的 108x108 像素规格，随后通过 JSON API 分发给客户端软件使用。
-✨ Features (功能特性)
- * 🔒 安全认证：基于环境变量的密码保护机制，防止未授权上传。
- * 🎨 自动处理：前端自动裁剪并压缩图片为 108x108 PNG 格式，节省服务器算力。
- * ☁️ 边缘存储：利用 Cloudflare R2 存储实体文件，KV 存储索引数据，全球高速访问。
- * 👋 极简交互：支持拖拽上传 (Drag & Drop)，内置输入名称校验（仅限字母）。
- * 🚀 标准 API：提供标准化的 JSON 接口，第三方软件可直接调用获取图标列表。
-🛠 Tech Stack (技术栈)
- * Runtime: Cloudflare Workers
- * Storage: Cloudflare R2 (Object Storage)
- * Database: Cloudflare KV (Key-Value Store)
- * Language: JavaScript (ES Modules)
-📡 API Reference (接口文档)
+> 基于 Cloudflare Workers 构建的轻量级图标云端管理系统。
+
+**Asonino Icon Cloud** 是一个全栈 Serverless 应用，旨在提供简单、快速的图标托管服务。它允许管理员通过 Web 界面上传图片，并在浏览器端自动处理为标准的 **108x108** 像素规格，随后通过 JSON API 分发给客户端软件使用。
+
+---
+
+## ✨ Features (功能特性)
+
+* **🔒 安全认证**：基于环境变量的密码保护机制，防止未授权上传。
+* **🎨 自动处理**：前端自动裁剪并压缩图片为 `108x108` PNG 格式，节省服务器算力。
+* **☁️ 边缘存储**：利用 Cloudflare R2 存储实体文件，KV 存储索引数据，全球高速访问。
+* **👋 极简交互**：支持拖拽上传 (Drag & Drop)，内置输入名称校验（仅限字母）。
+* **🚀 标准 API**：提供标准化的 JSON 接口，第三方软件可直接调用获取图标列表。
+
+## 🛠 Tech Stack (技术栈)
+
+* **Runtime**: Cloudflare Workers
+* **Storage**: Cloudflare R2 (Object Storage)
+* **Database**: Cloudflare KV (Key-Value Store)
+* **Language**: JavaScript (ES Modules)
+
+---
+
+## 📡 API Reference (接口文档)
+
 该项目提供一个核心 GET 接口供软件调用。
-Get Icon List
+
+### Get Icon List
 获取所有已上传图标的索引列表。
- * Endpoint: GET /api/icon
- * Response Format: JSON
-Response Example:
+
+- **Endpoint**: `GET /api/icon`
+- **Response Format**: `JSON`
+
+**Response Example:**
+
+```json
 {
   "name": "Asonino icon",
   "description": "By ChuiYan",
   "icons": [
     {
       "name": "Bilibili",
-      "url": "https://your-worker.workers.dev/file/Bilibili.png"
+      "url": "[https://your-worker.workers.dev/file/Bilibili.png](https://your-worker.workers.dev/file/Bilibili.png)"
     },
     {
       "name": "Google",
-      "url": "https://your-worker.workers.dev/file/Google.png"
+      "url": "[https://your-worker.workers.dev/file/Google.png](https://your-worker.workers.dev/file/Google.png)"
     }
   ]
 }
@@ -43,7 +60,7 @@ Response Example:
  * 启用 Workers, R2 和 KV 功能。
 方式一：使用 Wrangler CLI (推荐)
  * 克隆项目
-   git clone https://github.com/your-username/asonino-icon-cloud.git
+   git clone [https://github.com/your-username/asonino-icon-cloud.git](https://github.com/your-username/asonino-icon-cloud.git)
 cd asonino-icon-cloud
 
  * 创建存储资源
