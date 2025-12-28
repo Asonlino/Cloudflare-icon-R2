@@ -87,7 +87,7 @@ bucket_name = "icon-bucket"
  * 部署
    npx wrangler deploy
 
-方式二：Cloudflare 网页控制台
+**方式二：Cloudflare 网页控制台
 如果你没有本地开发环境，可以直接在 Cloudflare Dashboard 操作：
  * 创建资源：在后台分别创建一个 KV (命名为 ICON_KV) 和一个 R2 Bucket (命名为 icon-bucket)。
  * 创建 Worker：新建一个 Worker，将 src/index.js 的代码复制进去。
@@ -96,7 +96,8 @@ bucket_name = "icon-bucket"
    * R2 Bucket Bindings: 变量名 ICON_BUCKET -> 指向你创建的 Bucket。
    * Environment Variables: 变量名 ADMIN_PASSWORD -> 值填入你想要的密码。
  * 保存并部署。
-📖 Usage (使用说明)
+
+**📖 Usage (使用说明)
  * 打开部署后的 Worker 域名 (例如 https://xxx.workers.dev).
  * 输入在环境变量中设置的密码。
  * 进入上传页面：
@@ -104,5 +105,6 @@ bucket_name = "icon-bucket"
    * 图片：点击或拖拽图片到上传框。
  * 点击上传，系统会自动处理图片并保存。
  * 访问 /api/icon 即可看到最新的 JSON 数据。
-📝 License
+
+**📝 License
 MIT © 2025 Asonlino
